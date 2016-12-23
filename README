@@ -1,0 +1,40 @@
+Project by Cory Sollberger & Zach Hutchins
+
+Our project revolves around the implementation of an AVL tree with additional functionality.
+We have a cached list of nodes which have been accessed the most, where the size of the list
+is proportional to the size of the tree.
+
+This list, "hotList", is checked first when inserting nodes
+	- If a hit occurs, the node is returned to the calling function
+	- If the node is not in the list, the system traverses the AVL tree
+		to search for the given node
+		
+We tested our tree by creating a "test" button, which essentially populates the tree with a random number
+of new nodes, each with a key value between 0-500.
+
+The testing procedure checks when the node is within the hotList, and increments a counter specific to this condition
+and it also checks the number of total traversals the tree must do to complete the insertion of the new nodes if the 
+node is not within the hotList.
+
+When the test is completed the outcome is set to the JTextArea (console) revealing the comparison of the two counter
+variables.
+
+Known Bugs and Incorrect/Incomplete Implementations:
+- When balancing the tree there is one specific instance which is not rotated properly
+	When the node, specifically a leftchild, is added to the leftmost node, the tree will do a single rotation
+	where a double rotation is needed. However this bug does not occur when the rightmost child has a node added to its
+	rightChild.
+	
+	We think the bug has something to do with the balancing information, probably due to an incorrect Balance Factor. Upon
+	checking each rotation (left, right, doubleLeft, and doubleRight) we were unable to see what would cause the problem in
+	only the specific instance mentioned above and not when the same thing is done but in the opposite location.
+	
+- Deletion of Nodes is only fully functional for "leaf" nodes, defined as a node with no non-empty children.
+	Applying a deletion to any other node will not result in the correct output.
+	
+	 
+The buttons also have tooltips which show how to make the functionality work,
+type the argument into the TextField
+
+Thank you, and Happy Holidays!
+Cory Sollberger & Zach Hutchins
